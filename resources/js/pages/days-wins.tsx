@@ -19,6 +19,13 @@ type Props = { entries: Entry[]; stats: Stats };
 type Tab = 'today' | 'journal' | 'growth';
 type Filter = 'all' | 'wins' | 'reflections' | 'favorites';
 
+// Original Stitch-generated illustration URLs. The local SVG is an offline fallback.
+const stitchArt = {
+    journal: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDvodyPv4mYkUzGv3MSmzX_fdwrKE6veXV5BDjt5V8haP9ybUVIolsYH79xObXZFyqq4d7aCXixpyiuub_nmOU5Ws_FSGlzpmzxX25YHduUHnNcq9GuAkLWsM91Bs9_8y_lNXLTHyQQ3NhXT76-dbu-9gPP8RUPIX-BAoCp33zRP1QtkVDhCCWmTuEE8dVh00RstFcvr3zH2UX33LdryZ01JyvvH2smdJNQ742I-g4kSjttHM-KBVS2kA',
+    trophy: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfYysbX1xZAHCvm0kZYWOsm1bxi5Y6M7oZoqtYiSssnL9y9AHZsqleImEjCXeooFyFkthK48xN1cMQUiMgk7n-IoKLIKLTIc_kw9yhLoEVDz1xdgRPgGxMBCPednQyV-1HbpvpcOFHDYQMW4fRs6Gh2337JzP9Gs0EulGethJzD_yIIPPv27SoyLgGcrKM2bHWUuqPAIvgFRlTWsBD7qIVzVRdJhmG9YW8rr7qmUKpKp9QwvLyVmisAw',
+    flame: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDlwyvofVPuwLYoI3g2piZ4aV8H_E-rpcEGjzU5GwladNjRGA3iUSejRf7rtfBGcXAKULPlu31wzMiYQSKAxvj5WguuBDHULvhC3-W8M-r8q5NUKFGFhHIU9p9K6SMXcO6yhgNPCsIWXyzp_crmcs29Um7KV4Xqt6qSVqQ8lHtM9iPy0E5FOtowItGhHuvu_4X6w2GGAyY2TT-vM3NOdVuktkV0HuAhWcgrtRojTRB7WyN6Ui4qjEPbnA',
+};
+
 const moods: { value: Mood; label: string; icon: string; bg: string }[] = [
     { value: 'radiant', label: 'Radiant', icon: '☀', bg: '#ffe8a3' },
     { value: 'peaceful', label: 'Peaceful', icon: '☁', bg: '#e4d9fa' },
@@ -171,13 +178,13 @@ export default function DaysWins({ entries, stats }: Props) {
                     <div className="dw-stitch-hero">
                         <div><h1>Make today count.</h1><p>Reflect on 1 little win &amp; mood.</p>
                         <button type="button" className="dw-stitch-cta" onClick={() => openEditor(todayEntry)}><Plus size={16}/>{todayEntry ? 'Edit today' : 'Capture today'}</button></div>
-                        <img src="/brand/journal.svg" alt="Floating lavender journal with golden star" />
+                        <img src={stitchArt.journal} alt="Floating lavender journal with golden star" onError={event => { event.currentTarget.onerror = null; event.currentTarget.src = '/brand/journal.svg'; }} />
                     </div>
                     <div className="dw-stitch-heading"><strong>HOW ARE YOU FEELING?</strong><small>Daily Pulse</small></div>
                     <MoodPicker value={todayEntry?.mood ?? 'peaceful'} onChange={m => openEditor(todayEntry, m)}/>
                     <div className="dw-stitch-heading"><strong>HIGHLIGHT OF THE DAY</strong><small>✦ {stats.streak} Day Streak</small></div>
                     <button type="button" className="dw-today-highlight" onClick={() => openEditor(todayEntry)}>
-                        <span className="dw-highlight-art"><Trophy size={23}/></span><span><small>LITTLE WIN</small><strong>{todayEntry?.little_win ? '“' + todayEntry.little_win + '”' : 'A little win deserves to be remembered.'}</strong></span><MoreHorizontal size={18}/>
+                        <span className="dw-highlight-art"><img src={stitchArt.trophy} alt="" onError={event => { event.currentTarget.style.display = 'none'; }} /><Trophy size={19}/></span><span><small>LITTLE WIN</small><strong>{todayEntry?.little_win ? '“' + todayEntry.little_win + '”' : 'A little win deserves to be remembered.'}</strong></span><MoreHorizontal size={18}/>
                     </button>
                     <div className="dw-stitch-heading"><strong>RECENT REFLECTION</strong><button type="button" onClick={() => setTab('journal')}>View all →</button></div>
                     {lastReflection ? <button type="button" className="dw-reflection" onClick={() => openEditor(lastReflection)}>
@@ -203,7 +210,7 @@ export default function DaysWins({ entries, stats }: Props) {
                 </section>}
                 {tab === 'growth' && <section className="dw-stitch-stack">
                     <div className="dw-page-heading"><div><span>A JOURNEY WORTH KEEPING</span><h1>My Growth</h1></div></div>
-                    <div className="dw-growth-feature"><div><small>♧ CURRENT STREAK</small><strong>{stats.streak} <span>Days</span></strong><p>✦ Every day is a fresh start</p></div><span className="dw-growth-flame"><Flame size={44} fill="#ffd7a7" stroke="#bd7b3b"/></span></div>
+                    <div className="dw-growth-feature"><div><small>♧ CURRENT STREAK</small><strong>{stats.streak} <span>Days</span></strong><p>✦ Every day is a fresh start</p></div><span className="dw-growth-flame"><img src={stitchArt.flame} alt="" onError={event => { event.currentTarget.style.display = 'none'; }} /><Flame size={27} fill="#ffd7a7" stroke="#bd7b3b"/></span></div>
                     <div className="dw-growth-metrics"><div><BookOpen size={17}/><strong>{stats.entries}</strong><small>Journal Entries</small></div><div><Trophy size={17}/><strong>{stats.wins}</strong><small>Wins Logged</small></div><div><Heart size={17}/><strong>{stats.favorites}</strong><small>Saved Moments</small></div></div>
                     <MoodGraph flow={stats.mood_flow}/>
                     <div className="dw-milestones"><div className="dw-flow-heading"><h2>Recent Milestones</h2></div>
