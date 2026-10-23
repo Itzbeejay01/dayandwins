@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" fill="none" role="img" aria-label="Lavender journal with a golden star">
+<defs>
+<linearGradient id="cover" x1="50" y1="60" x2="290" y2="350" gradientUnits="userSpaceOnUse"><stop stop-color="#DED6FF"/><stop offset=".31" stop-color="#A58CE5"/><stop offset=".75" stop-color="#8262C5"/><stop offset="1" stop-color="#6245A9"/></linearGradient>
+<linearGradient id="spine" x1="84" y1="74" x2="122" y2="313" gradientUnits="userSpaceOnUse"><stop stop-color="#B4A4F1"/><stop offset=".6" stop-color="#7455BC"/><stop offset="1" stop-color="#51339A"/></linearGradient>
+<linearGradient id="page" x1="262" y1="112" x2="296" y2="311" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF8EB"/><stop offset="1" stop-color="#DBD0B8"/></linearGradient>
+<linearGradient id="gold" x1="180" y1="26" x2="220" y2="112" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF2AD"/><stop offset=".4" stop-color="#FFC741"/><stop offset="1" stop-color="#DB861A"/></linearGradient>
+<filter id="shadow" x="-40%" y="-40%" width="190%" height="190%"><feGaussianBlur stdDeviation="13"/></filter>
+<filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<ellipse cx="182" cy="335" rx="102" ry="21" fill="#5C438A" opacity=".18" filter="url(#shadow)"/>
+<g transform="rotate(-7 180 190)">
+<path d="M95 92 Q94 83 107 80 L266 77 Q282 77 281 90 L281 309 Q279 319 268 320 L103 325 Q93 324 93 315Z" fill="#503582"/>
+<path d="M111 93 L271 89 L272 316 L110 318Z" fill="url(#page)"/>
+<path d="M100 82 L259 78 Q276 78 277 91 L276 299 Q276 309 264 311 L99 318Z" fill="url(#cover)"/>
+<path d="M100 82 L126 81 L121 313 L99 318Z" fill="url(#spine)"/>
+<path d="M135 79 L135 307" stroke="#DCD1FA" stroke-width="2" opacity=".48"/>
+<path d="M119 94 L253 90" stroke="#F9F3FF" opacity=".46" stroke-width="2"/>
+<path d="M243 80 L258 79 L257 187 L251 182 L242 189Z" fill="#F2CB70"/>
+<path d="M162 187 Q180 176 191 156 Q201 181 219 191 Q199 201 191 221 Q182 202 162 187Z" fill="#F8E9A9" opacity=".85"/>
+<path d="M192 163 Q202 185 215 190 Q202 195 191 213 Q186 195 168 186 Q184 182 192 163Z" fill="#FFF9D3"/>
+<path d="M264 80 Q278 82 278 95 L278 298" stroke="#FFF" stroke-width="4" opacity=".55"/>
+</g>
+<path d="M186 22 Q197 55 229 66 Q199 76 187 109 Q175 77 144 66 Q177 56 186 22Z" fill="#F1B641" opacity=".35" filter="url(#glow)"/>
+<path d="M186 25 Q198 55 228 66 Q198 79 186 108 Q175 79 144 66 Q176 56 186 25Z" fill="url(#gold)"/>
+<path d="M186 53 Q190 63 201 66 Q190 70 186 81 Q182 70 171 66 Q182 63 186 53Z" fill="#FFF9D2"/>
+<circle cx="236" cy="41" r="3" fill="#E5AC37" opacity=".6"/>
+<circle cx="135" cy="39" r="2" fill="#E5AC37" opacity=".7"/>
+</svg>

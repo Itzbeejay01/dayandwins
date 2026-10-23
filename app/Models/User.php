@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\Contracts\PasskeyUser;
 use Laravel\Fortify\PasskeyAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -33,6 +34,25 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, PasskeyAuthenticatable, TwoFactorAuthenticatable;
+
+    /**
+     * Remove private journal photos when an account is deleted.
+     * Journal entry rows are removed by the database foreign-key cascade.
+     */
+    protected static function booted(): void
+    {
+        static::deleting(function (User $user): void {
+            JournalEntry::query()
+                ->where('user_id', $user->id)
+                ->whereNotNull('photo_path')
+                ->pluck('photo_path')
+                ->each(function (mixed $path): void {
+                    if (is_string($path) && $path !== '') {
+                        Storage::disk('local')->delete($path);
+                    }
+                });
+        });
+    }
 
     /**
      * Get the attributes that should be cast.
