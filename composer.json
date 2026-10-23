@@ -50,7 +50,8 @@
             "@php artisan key:generate",
             "@php artisan migrate --force",
             "npm install",
-            "npm run build"
+            "npm run build",
+            "@php scripts/generate-native-assets.php"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
@@ -95,6 +96,9 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "native:art": [
+            "@php scripts/generate-native-assets.php"
         ]
     },
     "extra": {
