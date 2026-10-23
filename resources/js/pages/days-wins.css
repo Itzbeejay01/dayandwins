@@ -1682,3 +1682,101 @@
 .dw-growth-flame > img {
     padding: 4px;
 }
+
+
+/* Compact mobile account settings */
+.dw-mobile-settings {
+    min-height: 100dvh;
+    background: #fdf8ff;
+    color: #27243a;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.dw-settings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(61px + env(safe-area-inset-top, 0px));
+    padding: env(safe-area-inset-top, 0px) 22px 0;
+    background: #fff9;
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #f0eafb;
+}
+.dw-settings-header > a,
+.dw-settings-header > div {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+}
+.dw-settings-header > a {
+    border-radius: 12px;
+    background: #eee7fa;
+    color: #6b4caa;
+}
+.dw-settings-header strong {
+    font-size: 15px;
+    letter-spacing: -.4px;
+}
+.dw-settings-header em {
+    font-family: Fraunces, serif;
+    font-weight: 500;
+    color: #8465c5;
+}
+.dw-settings-container {
+    max-width: 520px;
+    margin: auto;
+    padding: 24px 20px calc(30px + env(safe-area-inset-bottom, 0px));
+}
+.dw-settings-title small {
+    color: #8465c5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+.dw-settings-title h1 {
+    font: 500 31px Fraunces, Georgia, serif;
+    margin-top: 7px;
+}
+.dw-settings-title p {
+    font-size: 12px;
+    margin-top: 6px;
+    color: #756d82;
+}
+.dw-settings-tabs {
+    display: flex;
+    gap: 8px;
+    margin: 24px 0;
+}
+.dw-settings-tabs a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex: 1;
+    background: white;
+    color: #6a6280;
+    border-radius: 13px;
+    padding: 11px 8px;
+    font-size: 11px;
+    font-weight: 700;
+}
+.dw-settings-tabs a.active {
+    background: #8465c5;
+    color: white;
+}
+.dw-settings-body {
+    background: white;
+    padding: 20px;
+    border: 1px solid #f0eafb;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px #27243a0b;
+}
+.dw-settings-body input {
+    min-height: 44px;
+    border-radius: 11px;
+}
+.dw-settings-body button[type='submit'] {
+    background: #8465c5;
+    color: white;
+    border-radius: 12px;
+}
