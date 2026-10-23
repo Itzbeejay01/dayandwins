@@ -72,10 +72,17 @@ class JournalController extends Controller
             'remove_photo' => ['sometimes', 'boolean'],
         ]);
 
-        $entry = JournalEntry::firstOrNew([
-            'user_id' => $request->user()->id,
-            'entry_date' => $data['entry_date'],
-        ]);
+        $entry = JournalEntry::query()
+            ->where('user_id', $request->user()->id)
+            ->whereDate('entry_date', $data['entry_date'])
+            ->first();
+
+        if (! $entry) {
+            $entry = new JournalEntry([
+                'user_id' => $request->user()->id,
+                'entry_date' => $data['entry_date'],
+            ]);
+        }
 
         $oldPhoto = $entry->photo_path;
         $newPhoto = null;
