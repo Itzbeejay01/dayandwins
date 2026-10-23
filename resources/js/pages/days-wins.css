@@ -1683,7 +1683,6 @@
     padding: 4px;
 }
 
-
 /* Compact mobile account settings */
 .dw-mobile-settings {
     min-height: 100dvh;
@@ -1715,7 +1714,7 @@
 }
 .dw-settings-header strong {
     font-size: 15px;
-    letter-spacing: -.4px;
+    letter-spacing: -0.4px;
 }
 .dw-settings-header em {
     font-family: Fraunces, serif;
@@ -1734,7 +1733,10 @@
     letter-spacing: 1.2px;
 }
 .dw-settings-title h1 {
-    font: 500 31px Fraunces, Georgia, serif;
+    font:
+        500 31px Fraunces,
+        Georgia,
+        serif;
     margin-top: 7px;
 }
 .dw-settings-title p {

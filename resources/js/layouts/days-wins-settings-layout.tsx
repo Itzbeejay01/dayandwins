@@ -22,7 +22,9 @@ export default function MobileSettingsLayout({
                 <Link href="/dashboard" aria-label="Back to your journal">
                     <ArrowLeft size={18} />
                 </Link>
-                <strong>Days <em>&</em> Wins</strong>
+                <strong>
+                    Days <em>&</em> Wins
+                </strong>
                 <div aria-hidden="true" />
             </header>
             <div className="dw-settings-container">
@@ -31,12 +33,17 @@ export default function MobileSettingsLayout({
                     <h1>Settings</h1>
                     <p>A little space for the things that matter.</p>
                 </div>
-                <nav className="dw-settings-tabs" aria-label="Settings sections">
-                    {links.map(item => (
+                <nav
+                    className="dw-settings-tabs"
+                    aria-label="Settings sections"
+                >
+                    {links.map((item) => (
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={url.startsWith(item.href) ? 'active' : ''}
+                            className={
+                                url.startsWith(item.href) ? 'active' : ''
+                            }
                         >
                             <item.icon size={16} />
                             {item.label}
