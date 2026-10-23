@@ -21,7 +21,7 @@ class JournalController extends Controller
             ->orderByDesc('entry_date')
             ->get(['id', 'entry_date', 'mood', 'body', 'little_win', 'photo_path', 'is_favorite']);
 
-        $dates = $entries->pluck('entry_date')->map(fn ($date) => $date->toDateString())->all();
+        $dates = $entries->map(fn (JournalEntry $entry): string => Carbon::parse($entry->entry_date)->toDateString())->all();
         $streak = 0;
         $day = Carbon::today();
 
@@ -37,9 +37,9 @@ class JournalController extends Controller
         $moodScore = ['reflective' => 1, 'tender' => 2, 'grounded' => 3, 'peaceful' => 4, 'radiant' => 5];
 
         return Inertia::render('days-wins', [
-            'entries' => $entries->map(fn (JournalEntry $entry) => [
+            'entries' => $entries->toBase()->map(fn ($entry): array => [
                 'id' => $entry->id,
-                'entry_date' => $entry->entry_date->toDateString(),
+                'entry_date' => Carbon::parse($entry->entry_date)->toDateString(),
                 'mood' => $entry->mood,
                 'body' => $entry->body,
                 'little_win' => $entry->little_win,
@@ -53,7 +53,7 @@ class JournalController extends Controller
                 'favorites' => $entries->where('is_favorite', true)->count(),
                 'mood_flow' => collect(range(6, 0))->map(function ($daysAgo) use ($entries, $moodScore) {
                     $date = Carbon::today()->subDays($daysAgo)->toDateString();
-                    $mood = $entries->first(fn ($entry) => $entry->entry_date->toDateString() === $date)?->mood;
+                    $mood = $entries->first(fn ($entry) => Carbon::parse($entry->entry_date)->toDateString() === $date)?->mood;
 
                     return ['date' => $date, 'mood' => $mood, 'score' => $mood ? $moodScore[$mood] : null];
                 })->values()->all(),
@@ -82,6 +82,10 @@ class JournalController extends Controller
 
         if ($request->hasFile('photo')) {
             $newPhoto = $request->file('photo')->store('journal-photos/'.$request->user()->id, 'local');
+            if ($newPhoto === false) {
+                throw new \RuntimeException('Unable to store journal photo.');
+            }
+
             $entry->photo_path = $newPhoto;
         } elseif ($request->boolean('remove_photo')) {
             $entry->photo_path = null;
