@@ -18,10 +18,22 @@ export default function BrandSplash() {
 
     if (!visible) return null;
 
-    return <div className="dw-splash" role="status" aria-label="Opening Days and Wins">
-        <div className="dw-intro-art"><img src="/brand/journal.svg" alt="" /></div>
-        <h1 className="dw-intro-name">Days <span>&</span> Wins</h1>
-        <p>Every little win matters. <span>✦</span></p>
-        <div className="dw-intro-line" aria-hidden="true" />
-    </div>;
+    return (
+        <div
+            className="dw-splash"
+            role="status"
+            aria-label="Opening Days and Wins"
+        >
+            <div className="dw-intro-art">
+                <img src="/brand/journal.svg" alt="" />
+            </div>
+            <h1 className="dw-intro-name">
+                Days <span>&</span> Wins
+            </h1>
+            <p>
+                Every little win matters. <span>✦</span>
+            </p>
+            <div className="dw-intro-line" aria-hidden="true" />
+        </div>
+    );
 }

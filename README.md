@@ -85,10 +85,10 @@ Do not merge into `main` until checks pass and the design is reviewed on an actu
 
 ## Routes
 
-| Endpoint | Purpose |
-| --- | --- |
-| `GET /dashboard` | Authenticated Today / Journal / Growth |
-| `POST /journal-entries` | Create or update own day |
-| `GET /journal-entries/{entry}/photo` | Privately view own photo |
-| `PATCH /journal-entries/{entry}/favorite` | Toggle saved status |
-| `DELETE /journal-entries/{entry}` | Delete own entry |
+| Endpoint                                  | Purpose                                |
+| ----------------------------------------- | -------------------------------------- |
+| `GET /dashboard`                          | Authenticated Today / Journal / Growth |
+| `POST /journal-entries`                   | Create or update own day               |
+| `GET /journal-entries/{entry}/photo`      | Privately view own photo               |
+| `PATCH /journal-entries/{entry}/favorite` | Toggle saved status                    |
+| `DELETE /journal-entries/{entry}`         | Delete own entry                       |
