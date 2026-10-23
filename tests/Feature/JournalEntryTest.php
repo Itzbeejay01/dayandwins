@@ -122,7 +122,6 @@ it('rejects invalid mood, future date and oversized images', function () {
     expect(JournalEntry::where('user_id', $user->id)->count())->toBe(0);
 });
 
-
 it('removes private journal photos when the owner deletes their account', function () {
     Storage::fake('local');
 
