@@ -49,8 +49,7 @@ type Filter = 'all' | 'wins' | 'reflections' | 'favorites';
 
 // Original Stitch artwork is bundled locally; the vector journal is a fallback.
 const stitchArt = {
-    journal:
-        '/brand/stitch-journal.png',
+    journal: '/brand/stitch-journal.png',
     trophy: '/brand/stitch-trophy.png',
     flame: '/brand/stitch-flame.png',
 };
