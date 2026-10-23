@@ -16,7 +16,7 @@ Built with **Laravel 13, Inertia 3, React, TypeScript, Tailwind 4, SQLite and Na
 - Date calendar, text search, wins/reflections/saved filters and entry bookmarking
 - Streaks, entry/win totals, actual seven-day mood graph and milestone progress
 - Distinctive Days & Wins iOS design using Plus Jakarta Sans, Fraunces and Manrope
-- Original externally hosted Stitch illustrations with local fallback art
+- Original Stitch 3D illustrations bundled locally for offline rendering
 - Generated NativePHP icons and launch screen in matching brand colors
 - Automated feature tests for validation, privacy, ownership and uploads
 
@@ -75,7 +75,7 @@ Journal entries are always scoped to the authenticated account. Photos use the p
 
 Photos accept JPEG, PNG, WebP and HEIC/HEIF up to **10 MB**. The picker uses the web-view file input; test its integration on your actual iPhone simulator and device before App Store submission.
 
-The image illustrations from Stitch are externally hosted Google URLs because the uploaded ZIP contains screenshots and HTML, not separate image binaries. A local SVG illustration is bundled to ensure the Today hero remains usable without internet. For a fully offline build, export licensed original images as local assets and replace the remote URLs.
+The source Stitch ZIP included image URLs rather than separate artwork binaries. Its original journal, trophy and flame graphics were imported into `public/brand/stitch-*.png` and now ship locally with the app; a journal SVG is retained as an additional fallback. Use `php scripts/cache-stitch-art.php` only if these assets ever need to be regenerated.
 
 ## Design source and scope
 
