@@ -24,7 +24,7 @@ function MoodPicker({ selected, onSelect }: { selected: Mood; onSelect: (m: Mood
 }
 export default function DaysWins({ entries, stats }: Props) {
     const [tab, setTab] = useState<'today'|'journal'|'growth'>('today');
-    const [splash, setSplash] = useState(() => !sessionStorage.getItem('dw-launched'));
+    const [splash, setSplash] = useState(() => typeof window !== 'undefined' && !window.sessionStorage.getItem('dw-launched'));
     const [editing, setEditing] = useState(false);
     const [settings, setSettings] = useState(false);
     const { props } = usePage<{auth?:{user?:{name:string}}}>();
