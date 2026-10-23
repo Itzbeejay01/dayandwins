@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feature/stitch-days-wins-mvp
   pull_request:
 
 permissions:
