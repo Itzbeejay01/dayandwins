@@ -47,12 +47,12 @@ type Props = { entries: Entry[]; stats: Stats };
 type Tab = 'today' | 'journal' | 'growth';
 type Filter = 'all' | 'wins' | 'reflections' | 'favorites';
 
-// Original Stitch-generated illustration URLs. The local SVG is an offline fallback.
+// Original Stitch artwork is bundled locally; the vector journal is a fallback.
 const stitchArt = {
     journal:
-        'https://lh3.googleusercontent.com/aida-public/AB6AXuDvodyPv4mYkUzGv3MSmzX_fdwrKE6veXV5BDjt5V8haP9ybUVIolsYH79xObXZFyqq4d7aCXixpyiuub_nmOU5Ws_FSGlzpmzxX25YHduUHnNcq9GuAkLWsM91Bs9_8y_lNXLTHyQQ3NhXT76-dbu-9gPP8RUPIX-BAoCp33zRP1QtkVDhCCWmTuEE8dVh00RstFcvr3zH2UX33LdryZ01JyvvH2smdJNQ742I-g4kSjttHM-KBVS2kA',
-    trophy: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfYysbX1xZAHCvm0kZYWOsm1bxi5Y6M7oZoqtYiSssnL9y9AHZsqleImEjCXeooFyFkthK48xN1cMQUiMgk7n-IoKLIKLTIc_kw9yhLoEVDz1xdgRPgGxMBCPednQyV-1HbpvpcOFHDYQMW4fRs6Gh2337JzP9Gs0EulGethJzD_yIIPPv27SoyLgGcrKM2bHWUuqPAIvgFRlTWsBD7qIVzVRdJhmG9YW8rr7qmUKpKp9QwvLyVmisAw',
-    flame: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDlwyvofVPuwLYoI3g2piZ4aV8H_E-rpcEGjzU5GwladNjRGA3iUSejRf7rtfBGcXAKULPlu31wzMiYQSKAxvj5WguuBDHULvhC3-W8M-r8q5NUKFGFhHIU9p9K6SMXcO6yhgNPCsIWXyzp_crmcs29Um7KV4Xqt6qSVqQ8lHtM9iPy0E5FOtowItGhHuvu_4X6w2GGAyY2TT-vM3NOdVuktkV0HuAhWcgrtRojTRB7WyN6Ui4qjEPbnA',
+        '/brand/stitch-journal.png',
+    trophy: '/brand/stitch-trophy.png',
+    flame: '/brand/stitch-flame.png',
 };
 
 const moods: { value: Mood; label: string; icon: string; bg: string }[] = [
