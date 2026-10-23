@@ -126,7 +126,7 @@ return [
     |
     */
 
-    'appearance' => env('NATIVEPHP_APPEARANCE', 'system'),
+    'appearance' => env('NATIVEPHP_APPEARANCE', 'light'),
 
     /*
     |--------------------------------------------------------------------------
@@ -158,9 +158,9 @@ return [
     */
 
     'permissions' => [
-        // 'NSCameraUsageDescription' => 'Used to take a profile photo.',
+        'NSCameraUsageDescription' => 'Days & Wins lets you take an optional photo for a private journal entry.',
         // 'NSMicrophoneUsageDescription' => 'Used to record audio with your videos.',
-        // 'NSPhotoLibraryUsageDescription' => 'Used to select photos for your post.',
+        'NSPhotoLibraryUsageDescription' => 'Days & Wins lets you attach an optional photo to your private journal entry.',
     ],
 
     /*
