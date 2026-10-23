@@ -121,3 +121,30 @@ it('rejects invalid mood, future date and oversized images', function () {
 
     expect(JournalEntry::where('user_id', $user->id)->count())->toBe(0);
 });
+
+
+it('removes private journal photos when the owner deletes their account', function () {
+    Storage::fake('local');
+
+    $user = User::factory()->create();
+    $path = UploadedFile::fake()->image('last-memory.jpg')->store('journal-photos/'.$user->id, 'local');
+
+    expect($path)->toBeString();
+
+    JournalEntry::create([
+        'user_id' => $user->id,
+        'entry_date' => now()->toDateString(),
+        'mood' => 'peaceful',
+        'body' => 'A private memory',
+        'photo_path' => $path,
+    ]);
+
+    Storage::disk('local')->assertExists($path);
+
+    $this->actingAs($user)->delete(route('profile.destroy'), [
+        'password' => 'password',
+    ])->assertRedirect(route('home'));
+
+    Storage::disk('local')->assertMissing($path);
+    expect(JournalEntry::where('user_id', $user->id)->count())->toBe(0);
+});
