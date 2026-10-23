@@ -54,6 +54,7 @@ class JournalController extends Controller
                 'mood_flow' => collect(range(6, 0))->map(function ($daysAgo) use ($entries, $moodScore) {
                     $date = Carbon::today()->subDays($daysAgo)->toDateString();
                     $mood = $entries->first(fn ($entry) => $entry->entry_date->toDateString() === $date)?->mood;
+
                     return ['date' => $date, 'mood' => $mood, 'score' => $mood ? $moodScore[$mood] : null];
                 })->values()->all(),
             ],
@@ -123,6 +124,7 @@ class JournalController extends Controller
     {
         abort_unless($entry->user_id === $request->user()->id, 404);
         $entry->update(['is_favorite' => ! $entry->is_favorite]);
+
         return back();
     }
 

@@ -22,18 +22,19 @@ function rgb(int $hex): array
     return [($hex >> 16) & 255, ($hex >> 8) & 255, $hex & 255];
 }
 
-function ink(\GdImage $image, int $hex, int $alpha = 0): int
+function ink(GdImage $image, int $hex, int $alpha = 0): int
 {
     [$r, $g, $b] = rgb($hex);
+
     return imagecolorallocatealpha($image, $r, $g, $b, $alpha);
 }
 
-function rect(\GdImage $image, float $x1, float $y1, float $x2, float $y2, int $color): void
+function rect(GdImage $image, float $x1, float $y1, float $x2, float $y2, int $color): void
 {
     imagefilledrectangle($image, (int) $x1, (int) $y1, (int) $x2, (int) $y2, $color);
 }
 
-function art(\GdImage $image, int $w, int $h, float $centerX, float $centerY, float $scale): void
+function art(GdImage $image, int $w, int $h, float $centerX, float $centerY, float $scale): void
 {
     $violetShadow = ink($image, 0xCABBE7);
     $dark = ink($image, 0x543A95);
@@ -69,12 +70,13 @@ function art(\GdImage $image, int $w, int $h, float $centerX, float $centerY, fl
     imagefilledellipse($image, $x(-2), $y(-160), $x(19) - $x(0), $y(19) - $y(0), $goldLight);
 }
 
-function canvas(int $width, int $height): \GdImage
+function canvas(int $width, int $height): GdImage
 {
     $image = imagecreatetruecolor($width, $height);
     imageantialias($image, true);
     $base = ink($image, 0xFAF7F2);
     imagefill($image, 0, 0, $base);
+
     return $image;
 }
 
